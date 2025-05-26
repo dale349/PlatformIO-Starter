@@ -1,11 +1,7 @@
 #include <FastLED.h>
 #include <stdint.h>
+#include "main.h"
 
-#define LED_PIN     5
-#define NUM_LEDS    1
-#define BRIGHTNESS  255
-#define LED_TYPE    WS2812
-#define COLOR_ORDER GRB
 CRGB leds[NUM_LEDS];
 
 void wait_for_serial_connection() {
@@ -22,10 +18,16 @@ void setup() {
 }
 
 void loop() {
-  leds[0] = CRGB::Red;
-  FastLED.show();
-  delay(1000);
-  leds[0] = CRGB::Black;
-  FastLED.show();
-  delay(1000);
+ for (int i = 0; i < NUM_LEDS; i++) {
+    leds[i] = CRGB::Red; // Set all LEDs to red
+  FastLED.show(); // Update the LEDs
+  delay(50); // Wait for half a second
+leds[i] = CRGB::Green; // Set all LEDs to green
+  FastLED.show(); // Update the LEDs
+  delay(50); // Wait for half a second
+   leds[i] =CRGB::Black;
+FastLED.show(); // Update the LEDs
+  delay(50); // Wait for half a second
+}
+//fill_rainbow
 }
